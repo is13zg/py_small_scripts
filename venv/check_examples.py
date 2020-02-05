@@ -4,6 +4,7 @@ n = 15
 Answer_Only = 1
 DIV = 1
 Numeration = 1
+Otveti_v_stolbik = 1
 
 for i in range(1, n + 1):
     s = input()
@@ -24,13 +25,18 @@ for i in range(1, n + 1):
         s2 = s2.replace("÷", '/')
         s2 = s2.replace(":", '/')
 
+    if Otveti_v_stolbik:
+        sss = "\n"
+    else:
+        sss = "; "
+
     if Numeration:
         if Answer_Only:
-            print(str(i) + ".", eval(s2), end="; ")
+            print(str(i) + ".", eval(s2), end=sss)
         else:
             print(str(i) + ".", s, "=", eval(s2))
     else:
         if Answer_Only:
-            print(eval(s2), end="; ")
+            print(eval(s2), end=sss)
         else:
             print(s, "=", eval(s2))
