@@ -1,0 +1,89 @@
+from PIL import Image, ImageDraw
+
+import os
+
+width, height = 300, 300
+
+
+def make_square():
+    colors = [(9, 14, 196), (243, 11, 33), (251, 213, 3), (67, 184, 22)]
+    coords = [(40, 40, 260, 260), (75, 75, 225, 225), (105, 105, 195, 195)]
+    fill = [0, 1]
+    counter = 1;
+    for color in colors:
+        for cord in coords:
+            for f in fill:
+                im = Image.new("RGB", (width, height), color=(255, 255, 255))
+                draw = ImageDraw.Draw(im)
+                if f:
+                    draw.rectangle(cord, fill=color, outline=color)
+                else:
+                    draw.rectangle(cord, fill="#ffffff", outline=color, width=10)
+
+                im.save('square' + str(counter)+".jpeg", "JPEG", quality=95)
+                counter += 1;
+
+
+def make_circle():
+    colors = [(9, 14, 196), (243, 11, 33), (251, 213, 3), (67, 184, 22)]
+    coords = [(40, 40, 260, 260), (75, 75, 225, 225), (105, 105, 195, 195)]
+    fill = [0, 1]
+    counter = 1;
+    for color in colors:
+        for cord in coords:
+            for f in fill:
+                im = Image.new("RGB", (width, height), color=(255, 255, 255))
+                draw = ImageDraw.Draw(im)
+                if f:
+                    draw.ellipse(cord, fill=color, outline=color)
+                else:
+                    draw.ellipse(cord, fill="#ffffff", outline=color, width=10)
+
+                im.save('circle' + str(counter)+".jpeg", "JPEG", quality=95)
+                counter += 1;
+
+
+def make_triangel():
+    colors = [(9, 14, 196), (243, 11, 33), (251, 213, 3), (67, 184, 22)]
+    coords = [(30, 260, 150,40,270, 260), (65, 225, 150, 75, 235, 225), (95, 200, 150,100, 205, 200)]
+    fill = [0, 1]
+    counter = 1;
+    for color in colors:
+        for cord in coords:
+            for f in fill:
+                im = Image.new("RGB", (width, height), color=(255, 255, 255))
+                draw = ImageDraw.Draw(im)
+                if f:
+                    draw.polygon(cord, fill=color, outline=color)
+                else:
+                    draw.line(cord, fill=color, width = 12)
+                    draw.line((cord[-2],cord[-1],cord[0],cord[1]), fill=color, width=12)
+
+                im.save('triangel' + str(counter)+".jpeg", "JPEG", quality=95)
+                counter += 1;
+
+def make_pentagon():
+    colors = [(9, 14, 196), (243, 11, 33), (251, 213, 3), (67, 184, 22)]
+    coords = [(80, 260, 40, 130, 150,40, 260, 130, 220, 260),
+              (100, 225, 75, 135, 150, 75,  225, 135, 200, 225),
+              (120, 200, 100, 140, 150,100,  200, 140, 180, 200)]
+    fill = [0, 1]
+    counter = 1;
+    for color in colors:
+        for cord in coords:
+            for f in fill:
+                im = Image.new("RGB", (width, height), color=(255, 255, 255))
+                draw = ImageDraw.Draw(im)
+                if f:
+                    draw.polygon(cord, fill=color, outline=color)
+                else:
+                    draw.line(cord, fill=color, width = 12)
+                    draw.line((cord[-2],cord[-1],cord[0],cord[1]), fill=color, width=12)
+
+                im.save('pentagon' + str(counter)+".jpeg", "JPEG", quality=95)
+                counter += 1;
+
+make_square()
+make_circle()
+make_triangel()
+make_pentagon()
